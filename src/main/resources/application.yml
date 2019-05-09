@@ -4,9 +4,26 @@ spring:
   profiles:
     active:
       default
-    h2:
-      console:
-        enabled: true
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/sherbimetservice?useSSL=false
+    username: root
+    password: 27111997
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+  # Databaza mysql
+
+
+
 
 
 # konfigurimi per lidhje me eureka server (discovery service)
