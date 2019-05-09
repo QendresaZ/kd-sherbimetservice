@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: sherbimet-service
+  profiles:
+    active:
+      default
+    h2:
+      console:
+        enabled: true
+
+
+# konfigurimi per lidhje me eureka server (discovery service)
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 0 # merr port random
