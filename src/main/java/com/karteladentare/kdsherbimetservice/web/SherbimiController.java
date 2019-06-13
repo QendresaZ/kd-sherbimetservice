@@ -25,14 +25,22 @@ public class SherbimiController {
         return ResponseEntity.ok(sherbimiService.ktheTeGjithaSherbimet());
     }
 
+    @GetMapping("/{id}")
+    public Sherbimi ktheSherbimin(@PathVariable("id") Long id) {
+        try {
+            return sherbimiService.ktheSherbimin(id);
+        } catch (SherbimiNotFoundException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
     @PostMapping
-    public  ResponseEntity<Object> krijoSherbimin(@RequestBody Sherbimi sherbimi) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Sherbimi krijoSherbimin(@RequestBody Sherbimi sherbimi) {
         Sherbimi sherbimiKrijuar = sherbimiService.shtoSherbimin(sherbimi);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(sherbimiKrijuar.getId()).toUri();
-
-        return ResponseEntity.created(location).build();
+        return sherbimiKrijuar;
     }
 
     @PutMapping(path = "/{id}")
