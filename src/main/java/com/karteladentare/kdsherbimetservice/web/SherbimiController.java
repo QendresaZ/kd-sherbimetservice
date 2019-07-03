@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@CrossOrigin // me mujt me bo request nga ip/server tjeter per angularjs osht
+@CrossOrigin(origins = "http://localhost:3000") // me mujt me bo request nga ip/server tjeter per angularjs osht
 @RequestMapping(value = "v1/sherbimet", produces = "application/json")
 public class SherbimiController {
 
